@@ -1,0 +1,307 @@
+/* =========================================
+   1. RESET & VARIABEL GLOBAL
+   ========================================= */
+:root {
+    --primary-color: #8b0000; /* Merah Marun */
+    --accent-color: #f1c40f;  /* Kuning Emas */
+    --line-color: #999;       
+    --text-dark: #333;
+    --text-light: #fff;
+    --bg-light: #f9f9f9;
+    --dark-bg: #2c0505;       
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Mencegah geser kanan kiri */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================
+   2. HEADER & NAVIGASI (DIPERBAIKI)
+   ========================================= */
+header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 9999; /* Pastikan header selalu paling atas */
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo kiri, Menu kanan */
+    align-items: center;
+    padding: 15px 5%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background: #fff;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1001;
+    max-width: 80%; /* Agar tidak nabrak hamburger */
+}
+
+.logo-img img { 
+    width: 45px; 
+    height: 45px;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text h5 {
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+    text-transform: uppercase;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+/* Tombol Hamburger (Default Sembunyi di Laptop) */
+.menu-toggle {
+    display: none; 
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    margin-left: auto; /* Paksa ke kanan */
+}
+
+/* =========================================
+   3. ANIMASI ELEMENT
+   ========================================= */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+    filter: blur(2px);
+}
+.show {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+/* =========================================
+   4. HALAMAN HOME (HERO SECTION)
+   ========================================= */
+.hero {
+    position: relative;
+    width: 100%;
+    /* Gunakan min-height agar tidak gepeng di HP */
+    min-height: 500px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: #000;
+    padding: 20px;
+}
+
+.slider-wrapper, .slide, .overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+}
+.slide { opacity: 0; transition: opacity 1s ease-in-out; }
+.slide.active { opacity: 1; }
+
+.slide img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    opacity: 0.5; 
+}
+.overlay { 
+    background: rgba(0, 0, 0, 0.6); /* Gelapkan background agar teks terbaca */
+    z-index: 2; 
+}
+
+.hero-content {
+    position: relative; 
+    z-index: 3; 
+    max-width: 800px;
+    padding: 0 15px; /* Padding agar teks tidak mepet layar HP */
+}
+
+.hero h2 { 
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); 
+    line-height: 1.2;
+}
+.hero p { 
+    font-size: 1.1rem; 
+    margin-bottom: 2rem; 
+    line-height: 1.5;
+}
+
+.btn {
+    padding: 12px 30px; 
+    background: var(--accent-color); 
+    color: var(--primary-color);
+    text-decoration: none; 
+    font-weight: bold; 
+    border-radius: 5px; 
+    transition: 0.3s; 
+    display: inline-block; 
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   5. HALAMAN LAIN (BERITA, STRUKTUR, DLL)
+   ========================================= */
+/* Judul Halaman Khusus */
+.header-h1, .page-header h1 {
+    font-size: clamp(1.5rem, 5vw, 2.2rem); /* Font responsif otomatis */
+    text-align: center;
+    color: var(--primary-color);
+    margin: 30px 20px;
+    line-height: 1.3;
+}
+
+/* Features */
+.features { padding: 4rem 5%; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+.icon-circle { width: 70px; height: 70px; background: var(--accent-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: var(--primary-color); }
+
+/* News / Berita */
+.news-section { background-color: var(--dark-bg); padding: 3rem 0; }
+.news-container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.news-card { display: flex; gap: 2rem; margin-bottom: 3rem; background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+.news-image { flex: 1; min-width: 280px; }
+.news-image img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; border: 2px solid var(--accent-color); }
+.news-content { flex: 2; color: white; min-width: 280px; }
+.news-content h2 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--accent-color); }
+.news-desc { font-size: 0.9rem; line-height: 1.6; text-align: justify; color: #ddd; }
+
+/* Struktur Organisasi */
+.org-container { width: 100%; overflow-x: auto; text-align: center; padding-bottom: 50px; white-space: nowrap; }
+.tree { display: inline-block; padding: 20px; margin: 0 auto; }
+.tree ul { padding-top: 20px; position: relative; display: flex; justify-content: center; }
+.tree li { float: left; text-align: center; list-style-type: none; position: relative; padding: 20px 5px 0 5px; }
+.tree li::before, .tree li::after { content: ''; position: absolute; top: 0; right: 50%; border-top: 2px solid var(--line-color); width: 50%; height: 20px; }
+.tree li::after { right: auto; left: 50%; border-left: 2px solid var(--line-color); }
+.tree li:first-child::before, .tree li:last-child::after { border: 0 none; }
+.tree li:last-child::before { border-right: 2px solid var(--line-color); border-radius: 0 5px 0 0; }
+.tree li:first-child::after { border-radius: 5px 0 0 0; }
+.tree ul ul::before { content: ''; position: absolute; top: 0; left: 50%; border-left: 2px solid var(--line-color); width: 0; height: 20px; }
+.card-org { background: white; border: 1px solid #ccc; border-radius: 8px; padding: 10px; width: 130px; display: inline-block; position: relative; z-index: 2; box-shadow: 0 4px 6px rgba(0,0,0,0.1); white-space: normal; vertical-align: top; }
+.img-box img { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-color); margin: 0 auto;}
+.info h3 { font-size: 0.75rem; color: #333; margin-top: 5px; line-height: 1.2; font-weight: 700; }
+.info p { font-size: 0.6rem; color: var(--primary-color); font-weight: 700; text-transform: uppercase; margin-top: 3px; }
+.ketua { width: 160px; border-top: 4px solid var(--primary-color); }
+.group-box { display: flex; gap: 10px; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 10px; border: 1px dashed #ccc; }
+.seksi-head { border-top: 3px solid var(--accent-color); background: #fffbef; }
+.line-break { height: 30px; }
+
+/* =========================================
+   6. FOOTER
+   ========================================= */
+footer { background-color: #8b0000; color: white; padding-top: 3rem; font-size: 0.9rem; border-top: 5px solid var(--accent-color); margin-top: auto; }
+.footer-main { display: flex; justify-content: space-between; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 5%; gap: 2rem; }
+.footer-col { flex: 1; min-width: 250px; margin-bottom: 1rem; }
+.footer-title { color: var(--accent-color); font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); display: inline-block; padding-bottom: 5px; }
+.contact-item, .footer-contact-list li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.icon-gold { color: var(--accent-color); font-size: 1.2rem; min-width: 25px; }
+.maps-link { color: var(--accent-color); text-decoration: none; font-weight: bold; font-size: 0.85rem; display: block; margin-top: 10px; }
+.footer-bottom { background: rgba(0,0,0,0.2); text-align: center; padding: 1.5rem; margin-top: 1rem; }
+
+/* =========================================
+   7. MEDIA QUERIES (MOBILE FIX - PENTING)
+   ========================================= */
+@media (max-width: 900px) {
+    /* 1. Aktifkan Menu Hamburger */
+    .menu-toggle { display: block; }
+    
+    /* 2. Sembunyikan Menu Navigasi (Default) */
+    .nav-links {
+        display: none; /* Wajib hidden agar tidak muncul di sebelah logo */
+        position: absolute; 
+        top: 100%; /* Turun ke bawah header */
+        left: 0; 
+        width: 100%;
+        background: white; 
+        flex-direction: column; 
+        align-items: center;
+        padding: 20px 0; 
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        border-top: 2px solid var(--accent-color);
+        animation: slideDown 0.3s ease forwards;
+    }
+    
+    /* 3. Tampilkan Menu saat Class Active ditambahkan oleh JS */
+    .nav-links.active { display: flex; }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 4. Perkecil Teks Logo di HP */
+    .logo-img img { width: 35px; height: 35px; }
+    .logo-text h5 { font-size: 0.65rem; line-height: 1.1; }
+
+    /* 5. Fix Teks "Selamat Datang" yang terpotong */
+    .hero { min-height: 100vh; padding-top: 80px; } /* Full screen di HP */
+    .hero h2 { 
+        font-size: 1.8rem; /* Font lebih kecil */
+        line-height: 1.3;
+        margin-bottom: 15px;
+    }
+    .hero p { font-size: 0.9rem; padding: 0 10px; }
+
+    /* 6. Fix Footer Berantakan */
+    .footer-main { flex-direction: column; }
+    .footer-col { 
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+        padding-bottom: 20px; 
+        min-width: 100%;
+    }
+    .footer-col:last-child { border-bottom: none; }
+}

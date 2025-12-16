@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Instansi Modern</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo-area">
+          <div class="logo-img">
+            <img src="unnamed.png" alt="Logo Header" />
+          </div>
+
+          <div class="logo-text">
+            <h5>Persatuan Perawat Nasional Indonesia</h5>
+            <h5>DPK RS Santo Borromeus</h5>
+          </div>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="index.html">BERANDA</a></li>
+          <li><a href="profile.html">PROFIL</a></li>
+          <li><a href="publikasi.html">PUBLIKASI</a></li>
+          <li><a href="#kontak">KONTAK</a></li>
+        </ul>
+
+        <div class="menu-toggle">☰</div>
+      </div>
+    </header>
+
+    <section id="beranda" class="hero">
+      <div class="overlay"></div>
+
+      <div class="slider-wrapper">
+        <div class="slide active">
+          <img src="Borromeus.jpeg" alt="Gedung RS" />
+        </div>
+        <div class="slide">
+          <img src="perawat.png" alt="Tim Perawat" />
+        </div>
+        <div class="slide">
+          <img src="logoB.jpg" alt="logo" />
+        </div>
+      </div>
+
+      <div class="hero-content hidden">
+        <h2>Selamat Datang di Website Resmi</h2>
+        <p>
+          Wadah aspirasi dan pengembangan profesionalisme perawat di RS Santo
+          Borromeus Bandung.
+        </p>
+        <a href="profile.html" class="btn">Pelajari Lebih Lanjut</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="features-grid">
+        <div class="card hidden">
+          <div class="icon-circle">SI</div>
+          <h3>Sistem Informasi</h3>
+          <p>Akses data keanggotaan dan informasi terkini secara digital.</p>
+        </div>
+        <div class="card hidden">
+          <div class="icon-circle">JL</div>
+          <h3>Jurnal Publikasi</h3>
+          <p>Kumpulan riset dan publikasi ilmiah keperawatan terbaru.</p>
+        </div>
+        <div class="card hidden">
+          <div class="icon-circle">DL</div>
+          <h3>Download Area</h3>
+          <p>Unduh formulir, panduan, dan dokumen resmi organisasi.</p>
+        </div>
+        <div class="card hidden">
+          <div class="icon-circle">MT</div>
+          <h3>Mutasi Anggota</h3>
+          <p>Panduan dan prosedur layanan mutasi masuk atau keluar anggota.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="profil" class="about">
+      <div class="container hidden">
+        <div class="about-text">
+          <h3 class="section-title">Visi & Misi Kami</h3>
+          <br /><br />
+          <p><strong>VISI:</strong></p>
+          <p>Unggul dalam Berkarya, Bermitra, Bersosialisasi</p>
+          <br />
+        </div>
+      </div>
+    </section>
+
+    <footer id="kontak">
+      <div class="footer-main">
+        <div class="footer-col">
+          <h4 class="footer-title">ALAMAT KAMI</h4>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot icon-gold"></i>
+            <p>
+              <strong>RS Santo Borromeus</strong><br />
+              Jl. Ir. H. Juanda No.100, Lebakgede,<br />
+              Kec. Coblong, Kota Bandung,<br />
+              Jawa Barat 40132
+            </p>
+          </div>
+          <a href="https://maps.app.goo.gl/iLrEnoZm5U4WHvtz7" target="_blank" class="maps-link">Lihat di Google Maps →</a>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">TENTANG KAMI</h4>
+          <p class="about-desc">
+            <strong>DPK PPNI RS Santo Borromeus</strong> adalah wadah organisasi
+            profesi perawat yang berkomitmen untuk meningkatkan kompetensi,
+            etika, dan kesejahteraan anggota.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">CONTACT PERSON</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i class="fa-brands fa-whatsapp icon-gold"></i>
+              <span>0812-3456-7890 (Ns. Admin)</span>
+            </li>
+            <li>
+              <i class="fa-brands fa-instagram icon-gold"></i>
+              <span>@dpkppni_rsb</span>
+            </li>
+            <li>
+              <i class="fa-brands fa-youtube icon-gold"></i>
+              <span>DPK PPNI RSB Channel</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope icon-gold"></i>
+              <span>dpk.borromeus@contoh.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 DPK PPNI RS Santo Borromeus Bandung. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // 1. LOGIC SLIDER OTOMATIS
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+      const slideInterval = 4000;
+
+      function nextSlide() {
+        if (slides.length > 0) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }
+      }
+
+      if (slides.length > 0) setInterval(nextSlide, slideInterval);
+
+      // 2. LOGIC ANIMASI SCROLL (Sekarang berfungsi karena class .show sudah ada di CSS)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      });
+
+      const hiddenElements = document.querySelectorAll(".hidden");
+      hiddenElements.forEach((el) => observer.observe(el));
+
+      // 3. LOGIC MENU HP (Hamburger)
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      // Cek apakah elemen ada sebelum menjalankan perintah
+      if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+    </script>
+  </body>
+</html>
